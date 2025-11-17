@@ -1,256 +1,245 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <title>YomA Wine Search - UI Preview</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+    :root {
+      --wine-red: #A4193D;
+      --wine-red-dark: #7a1230;
+      --cream: #FFDFB9; /* Light, warm color for accents */
+      --text-main: #f5f5f5;
+      --text-soft: #e8d4c4;
+      --shadow-xl: 0 40px 90px rgba(0,0,0,0.55);
+      --input-bg: #fffbf7; /* Very light, off-white for input field */
+    }
 
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif+KR:wght@300;400;500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    body {
+      margin: 0;
+      font-family: "Noto Serif KR", serif;
+      background: #A4193D;
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      padding: 32px 16px;
+      min-height: 100vh;
+    }
 
-  <style>
-    :root {
-      --wine-red: #A4193D;
-      --wine-red-dark: #7a1230;
-      --cream: #FFDFB9;
-      --text-main: #f5f5f5;
-      --text-soft: #e8d4c4;
-      --shadow-xl: 0 40px 90px rgba(0,0,0,0.55);
-    }
+    .container {
+      width: 100%;
+      max-width: 900px;
+      animation: fadeIn 1.4s ease;
+    }
 
-    body {
-      margin: 0;
-      font-family: "Noto Serif KR", serif;
-      background: #A4193D;
-      color: var(--text-main);
-      display: flex;
-      justify-content: center;
-      padding: 32px 16px;
-      min-height: 100vh;
-    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-    .container {
-      width: 100%;
-      max-width: 900px;
-      animation: fadeIn 1.4s ease;
-    }
+    .hero {
+      /* Changed background to be more solid for a cleaner look */
+      background: var(--wine-red-dark); 
+      border-radius: 32px;
+      padding: 50px 36px 40px;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+    }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .hero::before {
+      /* Removed distracting background blur effect */
+      content: none; 
+    }
 
-    .hero {
-      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0)), var(--glass);
-      border-radius: 32px;
-      padding: 50px 36px 40px;
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: var(--shadow-xl);
-      backdrop-filter: blur(20px);
-      position: relative;
-      overflow: hidden;
-    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      border-radius: 50%;
-      border: 1px solid var(--blue-soft);
-      top: -200px;
-      right: -140px;
-      filter: blur(1px);
-      pointer-events: none;
-    }
+    .logo-text {
+      font-family: "Marcellus", serif;
+      font-size: 40px; /* Made the logo text bigger */
+      letter-spacing: 3px; /* Slightly increased spacing */
+      color: #FFDFB9;
+      text-shadow: 0 0 10px rgba(255,223,185,0.5); /* Added subtle glow */
+    }
 
-    .logo {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 40px;
-    }
+    .tagline {
+      font-size: 15px; /* Increased font size */
+      color: var(--text-soft);
+      margin-top: -4px;
+      font-weight: 300;
+    }
 
-    .logo-text {
-      font-family: "Marcellus", serif;
-      font-size: 32px;
-      letter-spacing: 2px;
-      color: #FFDFB9;
-    }
+    hr {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      margin: 0 0 30px;
+      display: none; /* Removed the HR */
+    }
 
-    .tagline {
-      font-size: 13px;
-      color: var(--text-soft);
-      margin-top: -4px;
-    }
+    .search-box {
+      background: transparent;
+      border: none;
+      padding: 0; /* Adjusted padding */
+      border-radius: 20px;
+    }
 
-    hr {
-      border: none;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      margin: 0 0 30px;
-    }
+    /* Google CSE Styling */
+    .gsc-control-cse {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin-bottom: 20px;
+    }
 
-    .search-box {
-      background: transparent;
-      border: none;
-      padding: 32px 28px;
-      border-radius: 20px;
-    }
+    table.gsc-search-box {
+      margin-bottom: 0 !important;
+      width: 100%;
+    }
 
-    /* Google CSE Styling */
-    .gsc-control-cse {
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
-    }
+    /* Main Search Container - Added a wrapper for the input field and button */
+    .gsc-search-box .gsc-input-box {
+      background: var(--input-bg) !important;
+      border: 2px solid var(--cream) !important;
+      border-radius: 30px !important; /* Highly rounded corners */
+      padding: 0 !important;
+      height: 60px; /* Fixed height for a robust feel */
+      display: flex;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-    table.gsc-search-box {
-      margin-bottom: 0 !important;
-    }
+    input.gsc-input {
+      background: transparent !important;
+      color: #1a1a1a !important;
+      font-size: 18px !important; /* Bigger font size */
+      padding: 0 20px !important;
+      height: 100%;
+      box-sizing: border-box;
+      flex-grow: 1; /* Input takes up maximum space */
+      border: none !important; /* Ensure no border on input itself */
+      margin: 0 !important;
+      width: auto !important; /* Override default width */
+    }
 
-    .gsc-input-box {
-      background: rgba(255,255,255,0.95) !important;
-      border: 2px solid var(--cream) !important;
-      border-radius: 14px !important;
-      padding: 6px 16px !important;
-    }
+    input.gsc-input::placeholder {
+      color: #999 !important;
+      font-weight: 300;
+    }
 
-    input.gsc-input {
-      background: transparent !important;
-      color: #1a1a1a !important;
-      font-size: 16px !important;
-      padding: 12px 4px !important;
-    }
+    .gsc-search-button-v2 {
+      /* Style the button as a circular icon */
+      background: var(--wine-red) !important;
+      border: none !important;
+      border-radius: 50% !important; /* Circle shape */
+      width: 44px; /* Fixed size */
+      height: 44px;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      padding: 0 !important;
+      margin-right: 8px !important;
+      cursor: pointer !important;
+      color: var(--cream) !important; /* Icon color */
+      transition: background 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
-    input.gsc-input::placeholder {
-      color: #666 !important;
-    }
+    /* Search Icon */
+    .gsc-search-button-v2 svg {
+      color: var(--cream) !important; /* Ensure icon is light color */
+      width: 24px;
+      height: 24px;
+    }
 
-    .gsc-search-button-v2 {
-      background: var(--cream) !important;
-      border: none !important;
-      border-radius: 10px !important;
-      padding: 14px 28px !important;
-      margin-left: 8px !important;
-      cursor: pointer !important;
-      color: var(--wine-red) !important;
-      font-weight: 600 !important;
-    }
+    .gsc-search-button-v2:hover {
+      background: var(--wine-red-dark) !important;
+    }
 
-    .gsc-search-button-v2:hover {
-      background: #ffd49a !important;
-    }
+    /* --- Results Page Styling (Kept original logic) --- */
+    .gsc-results-wrapper-overlay,
+    .gsc-results-wrapper-visible,
+    .gsc-resultsbox-visible {
+      background: white !important;
+      color: #333 !important;
+    }
 
-    /* Search Results Page - Override wine red background */
-    .gsc-results-wrapper-overlay,
-    .gsc-results-wrapper-visible,
-    .gsc-resultsbox-visible {
-      background: white !important;
-      color: #333 !important;
-    }
+    .gsc-webResult,
+    .gsc-result {
+      background: white !important;
+      border: 1px solid #e0e0e0 !important;
+      color: #333 !important;
+    }
 
-    /* Result items - white background, dark text */
-    .gsc-webResult,
-    .gsc-result {
-      background: white !important;
-      border: 1px solid #e0e0e0 !important;
-      color: #333 !important;
-    }
+    .gs-title,
+    .gs-title b,
+    .gsc-table-result a.gs-title,
+    .gsc-table-result a.gs-title b {
+      color: #1a0dab !important;
+    }
 
-    /* Result title links */
-    .gs-title,
-    .gs-title b,
-    .gsc-table-result a.gs-title,
-    .gsc-table-result a.gs-title b {
-      color: #1a0dab !important;
-    }
+    .gs-bidi-start-align.gs-visibleUrl {
+      color: #006621 !important;
+    }
 
-    /* Result URLs */
-    .gs-bidi-start-align.gs-visibleUrl {
-      color: #006621 !important;
-    }
+    .gs-snippet {
+      color: #545454 !important;
+    }
 
-    /* Result snippets */
-    .gs-snippet {
-      color: #545454 !important;
-    }
+    .gsc-cursor-box {
+      background: white !important;
+    }
 
-    /* Pagination */
-    .gsc-cursor-box {
-      background: white !important;
-    }
+    .gsc-cursor-page {
+      color: #1a0dab !important;
+    }
 
-    .gsc-cursor-page {
-      color: #1a0dab !important;
-    }
+    .gsc-control-cse *:not(input):not(button) {
+      background-color: white !important;
+    }
+    /* --- End Results Page Styling --- */
 
-    /* Override any remaining wine red */
-    .gsc-control-cse *:not(input):not(button) {
-      background-color: white !important;
-    }
 
-    .footer {
-      font-size: 12px;
-      color: var(--text-soft);
-      margin-top: 16px;
-      opacity: 0.7;
-      text-align: center;
-    }
+    .footer {
+      font-size: 13px; /* Slightly increased size */
+      color: var(--text-soft);
+      margin-top: 20px; /* Increased margin */
+      opacity: 0.8; /* Made it a little more visible */
+      text-align: center;
+    }
 
-    .site-info {
-      font-size: 8px;
-      color: var(--text-soft);
-      opacity: 0.6;
-      text-align: right;
-      margin-top: 20px;
-      line-height: 1.6;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-    }
+    .site-info {
+      font-size: 11px; /* Increased size */
+      color: var(--text-soft);
+      opacity: 0.7;
+      text-align: center; /* Centered text for better mobile display */
+      margin-top: 30px;
+      line-height: 1.8;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
 
-    @media (max-width: 600px) {
-      .hero { 
-        padding: 36px 24px; 
-      }
-      .logo-text { 
-        font-size: 28px; 
-      }
-      .search-box {
-        padding: 24px 20px;
-      }
-      .search-form {
-        flex-direction: column;
-      }
-      .search-button {
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="hero">
-      <div class="logo">
-        <div class="logo-text">YomA Wine Search</div>
-        <div class="tagline">직구 와인을 찾는 가장 편한 방법</div>
-      </div>
-
-      <hr>
-
-      <div class="search-box">
-        <script async src="https://cse.google.com/cse.js?cx=911c5210c6a5d4ed7"></script>
-        <div class="gcse-search"></div>
-
-        <div class="footer">검색 결과는 Google이 제공합니다.</div>
-
-        <div class="site-info">
-          위클리와인, 타운와인, 히든와인, 다이렉트와인, 엑스와인. <br>
-          (세금, 배송료 포함 원스톱 서비스 업체를 제공함)<br>
-          비타트라 독일, 비타트라 일본, 와인드롭은 외부 검색 제한으로 미서비스
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+    @media (max-width: 600px) {
+      .hero {
+        padding: 36px 24px;
+      }
+      .logo-text {
+        font-size: 32px;
+      }
+      /* Search box now uses full width and keeps the design */
+      .gsc-search-box .gsc-input-box {
+        height: 50px; /* Slightly smaller height on mobile */
+      }
+      input.gsc-input {
+        font-size: 16px !important;
+      }
+      .gsc-search-button-v2 {
+        width: 38px;
+        height: 38px;
+      }
+      .gsc-search-button-v2 svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  </style>
