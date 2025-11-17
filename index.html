@@ -9,20 +9,18 @@
 
   <style>
     :root {
-      --blue-deep: #1a3a5c;
-      --blue-dark: #0d2438;
-      --blue-accent: #5eb3ff;
-      --blue-soft: rgba(94, 179, 255, 0.2);
-      --glass: rgba(255,255,255,0.06);
-      --text-main: #f2f2f2;
-      --text-soft: #c5d4e6;
+      --wine-red: #A4193D;
+      --wine-red-dark: #7a1230;
+      --cream: #FFDFB9;
+      --text-main: #f5f5f5;
+      --text-soft: #e8d4c4;
       --shadow-xl: 0 40px 90px rgba(0,0,0,0.55);
     }
 
     body {
       margin: 0;
       font-family: "Noto Serif KR", serif;
-      background: radial-gradient(circle at top, #2a5280 0%, #1a3555 45%, #0a1520 80%);
+      background: #A4193D;
       color: var(--text-main);
       display: flex;
       justify-content: center;
@@ -77,7 +75,7 @@
       font-family: "Marcellus", serif;
       font-size: 32px;
       letter-spacing: 2px;
-      color: var(--blue-accent);
+      color: #FFDFB9;
     }
 
     .tagline {
@@ -88,16 +86,15 @@
 
     hr {
       border: none;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid rgba(255,255,255,0.2);
       margin: 0 0 30px;
     }
 
     .search-box {
-      background: rgba(0,0,0,0.35);
-      border: 1px solid rgba(255,255,255,0.06);
+      background: transparent;
+      border: none;
       padding: 32px 28px;
       border-radius: 20px;
-      backdrop-filter: blur(12px);
     }
 
     /* Google CSE Styling */
@@ -113,7 +110,7 @@
 
     .gsc-input-box {
       background: rgba(255,255,255,0.95) !important;
-      border: 2px solid var(--blue-accent) !important;
+      border: 2px solid var(--cream) !important;
       border-radius: 14px !important;
       padding: 6px 16px !important;
     }
@@ -130,16 +127,18 @@
     }
 
     .gsc-search-button-v2 {
-      background: var(--blue-accent) !important;
+      background: var(--cream) !important;
       border: none !important;
       border-radius: 10px !important;
       padding: 14px 28px !important;
       margin-left: 8px !important;
       cursor: pointer !important;
+      color: var(--wine-red) !important;
+      font-weight: 600 !important;
     }
 
     .gsc-search-button-v2:hover {
-      background: #4a9fe6 !important;
+      background: #ffd49a !important;
     }
 
     .footer {
@@ -148,6 +147,17 @@
       margin-top: 16px;
       opacity: 0.7;
       text-align: center;
+    }
+
+    .site-info {
+      font-size: 8px;
+      color: var(--text-soft);
+      opacity: 0.6;
+      text-align: right;
+      margin-top: 20px;
+      line-height: 1.6;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     @media (max-width: 600px) {
@@ -185,6 +195,11 @@
         <div class="gcse-search"></div>
 
         <div class="footer">검색 결과는 Google이 제공합니다.</div>
+
+        <div class="site-info">
+          위클리와인, 타운와인, 히든와인, 비타트라 독일, 비타트라 일본, 와인드롭,<br>
+          다이렉트와인, 엑스와인. (세금, 배송료 포함 원스톱 서비스 업체를 제공함)
+        </div>
       </div>
     </div>
   </div>
