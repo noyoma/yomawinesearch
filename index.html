@@ -2,11 +2,11 @@
     :root {
       --wine-red: #A4193D;
       --wine-red-dark: #7a1230;
-      --cream: #FFDFB9;
+      --cream: #FFDFB9; /* Accent color - now only used for text glow */
       --text-main: #f5f5f5;
       --text-soft: #e8d4c4;
       --shadow-xl: 0 40px 90px rgba(0,0,0,0.55);
-      --input-bg: #fffbf7;
+      --input-bg: #fffbf7; /* Input background */
     }
 
     body {
@@ -85,18 +85,19 @@
       display: block;
     }
 
-    /* 검색창 컨테이너 - 테두리 및 그림자 제거 적용 */
+    /* 1. 검색창 컨테이너 - 테두리 및 그림자 제거 */
     .gsc-search-box .gsc-input-box {
       background: var(--input-bg) !important;
-      border: none !important; 
+      border: none !important; /* 테두리 제거 */
       border-radius: 30px !important;
       height: 60px;
       display: flex;
       align-items: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 그림자를 좀 더 부드럽게 */
       padding-right: 8px !important;
     }
     
+    /* 내부 테이블 구조 */
     .gsc-search-box .gsc-input-box table {
       height: 100%;
       flex-grow: 1;
@@ -126,7 +127,7 @@
       font-weight: 300;
     }
 
-    /* 검색 버튼 스타일 (세련된 화살표 아이콘) 적용 */
+    /* 2. 검색 버튼 스타일 변경 (세련된 화살표 아이콘) */
     .gsc-search-button-v2 {
       background: var(--wine-red) !important;
       border: none !important;
@@ -143,38 +144,38 @@
       transition: background 0.2s ease;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       flex-shrink: 0;
-      position: relative;
+      position: relative; /* For the custom icon */
     }
 
     .gsc-search-button-v2:hover {
       background: var(--wine-red-dark) !important;
     }
     
+    /* 기본 돋보기 아이콘 숨기기 */
     .gsc-search-button-v2 svg {
       display: none;
     }
 
+    /* 화살표 아이콘 (Custom Arrow/Enter Icon) 추가 */
     .gsc-search-button-v2::after {
-      content: "→";
+      content: "→"; /* 유니코드 화살표 */
       font-size: 24px;
       font-weight: 700;
       line-height: 1;
       color: var(--cream) !important;
       position: absolute;
-      transform: translateX(1px);
+      transform: translateX(1px); /* 가운데 정렬 미세 조정 */
     }
 
 
-    /* --- 검색 결과 페이지 스타일 수정 (가장 중요) --- */
-    /* 검색 결과 영역 전체 배경을 흰색으로 강제 변경 */
+    /* --- Results Page Styling (유지) --- */
     .gsc-results-wrapper-overlay,
     .gsc-results-wrapper-visible,
     .gsc-resultsbox-visible {
-      background: white !important; /* 배경색 흰색으로 설정 */
-      color: #333 !important; /* 글자색 어둡게 설정 */
+      background: white !important;
+      color: #333 !important;
     }
 
-    /* 개별 검색 결과 항목 스타일 */
     .gsc-webResult,
     .gsc-result {
       background: white !important;
@@ -182,7 +183,6 @@
       color: #333 !important;
     }
 
-    /* 검색 결과 링크 색상 */
     .gs-title,
     .gs-title b,
     .gsc-table-result a.gs-title,
@@ -190,17 +190,14 @@
       color: #1a0dab !important;
     }
 
-    /* 검색 결과 URL 색상 */
     .gs-bidi-start-align.gs-visibleUrl {
       color: #006621 !important;
     }
 
-    /* 검색 결과 설명 텍스트 색상 */
     .gs-snippet {
       color: #545454 !important;
     }
 
-    /* 페이지네이션 배경 */
     .gsc-cursor-box {
       background: white !important;
     }
@@ -209,7 +206,6 @@
       color: #1a0dab !important;
     }
 
-    /* 혹시 남아있을 수 있는 와인색 배경 제거 */
     .gsc-control-cse *:not(input):not(button) {
       background-color: white !important;
     }
