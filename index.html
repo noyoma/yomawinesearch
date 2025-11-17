@@ -21,7 +21,7 @@
 
     body {
       margin: 0;
-      font-family: "Poppins", sans-serif;  /* ★ 북유럽 얇은 고딕 적용 */
+      font-family: "Poppins", sans-serif;  /* ★ 북유럽 얇은 고딕 */
       background: var(--wine-red);
       color: var(--text-main);
       display: flex;
@@ -99,6 +99,7 @@
       border-radius: 20px;
     }
 
+    /* Google CSE Styling */
     .gsc-control-cse {
       background: transparent !important;
       border: none !important;
@@ -109,11 +110,14 @@
       margin-bottom: 0 !important;
     }
 
+    /* ========================================================= */
+    /* ★ 검색창 크림색 라운드 박스 제거: 투명 + 얇은 라인만 */
+    /* ========================================================= */
     .gsc-input-box {
-      background: rgba(255,255,255,0.95) !important;
-      border: 2px solid var(--cream) !important;
-      border-radius: 14px !important;
-      padding: 6px 16px !important;
+      background: transparent !important;
+      border: 1px solid rgba(255,255,255,0.5) !important;
+      border-radius: 10px !important;
+      padding: 6px 12px !important;
     }
 
     input.gsc-input {
@@ -121,7 +125,7 @@
       color: #1a1a1a !important;
       font-size: 16px !important;
       font-family: "Poppins", sans-serif !important;
-      padding: 12px 4px !important;
+      padding: 10px 4px !important;
     }
 
     input.gsc-input::placeholder {
@@ -129,10 +133,10 @@
     }
 
     /* ========================================================= */
-    /* ★ 검색 버튼 전체를 배경색과 동일하게(버건디) */
+    /* ★ 검색 버튼 = 배경색과 동일(버건디) + 화살표 박스 */
     /* ========================================================= */
     .gsc-search-button-v2 {
-      background: var(--wine-red) !important; /* 페이지 배경색과 동일 */
+      background: var(--wine-red) !important; /* 배경과 동일 */
       border: none !important;
       border-radius: 10px !important;
       padding: 14px 28px !important;
@@ -140,30 +144,32 @@
       cursor: pointer !important;
     }
 
-    /* 구글 기본 텍스트 아이콘 숨기기 */
+    /* 기본 아이콘 숨김 */
     .gsc-search-button-v2 svg,
     .gsc-search-button-v2 span {
       display: none !important;
     }
 
-    /* ★ 화살표만 크림색 박스 + 와인색 화살표 */
+    /* ★ 크림색 박스 + 진한 버건디 화살표 */
     .gsc-search-button-v2::after {
       content: "➜";
-      background: var(--cream);         /* 크림색 박스 */
-      color: var(--wine-red-dark);      /* 화살표는 진한 버건디 */
+      background: var(--cream);
+      color: var(--wine-red-dark);
       padding: 4px 10px;
       border-radius: 6px;
       font-size: 18px;
       font-weight: 700;
-      line-height: 1;
       display: inline-block;
+      line-height: 1;
     }
 
     .gsc-search-button-v2:hover::after {
       background: #ffe7cb;
     }
 
-    /* Search Results */
+    /* ========================================================= */
+    /* 검색 결과 스타일은 원본 그대로 유지 */
+    /* ========================================================= */
     .gsc-results-wrapper-overlay,
     .gsc-results-wrapper-visible,
     .gsc-resultsbox-visible {
@@ -248,4 +254,18 @@
       <hr>
 
       <div class="search-box">
-        <script async src="https://cse.google.com/cse.js?cx
+        <script async src="https://cse.google.com/cse.js?cx=911c5210c6a5d4ed7"></script>
+        <div class="gcse-search"></div>
+
+        <div class="footer">검색 결과는 Google이 제공합니다.</div>
+
+        <div class="site-info">
+          위클리와인, 타운와인, 히든와인, 다이렉트와인, 엑스와인. <br>
+          (세금, 배송료 포함 원스톱 서비스 업체를 제공함)<br>
+          비타트라 독일, 비타트라 일본, 와인드롭은 외부 검색 제한으로 미서비스
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
