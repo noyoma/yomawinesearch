@@ -4,7 +4,7 @@
   <title>YomA Wine Search - UI Preview</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- 폰트 유지 (이미 Poppins 포함됨) -->
+  <!-- 폰트: 기존 유지 + Poppins 사용 -->
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif+KR:wght@300;400;500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -15,11 +15,13 @@
       --text-main: #f5f5f5;
       --text-soft: #e8d4c4;
       --shadow-xl: 0 40px 90px rgba(0,0,0,0.55);
+      --glass: rgba(0,0,0,0.3);
+      --blue-soft: rgba(255,255,255,0.12);
     }
 
     body {
       margin: 0;
-      font-family: "Poppins", sans-serif;   /* ★ 북유럽 얇은 고딕 적용 */
+      font-family: "Poppins", sans-serif;  /* ★ 폰트만 변경됨 */
       background: #A4193D;
       color: var(--text-main);
       display: flex;
@@ -97,6 +99,7 @@
       border-radius: 20px;
     }
 
+    /* Google CSE Styling */
     .gsc-control-cse {
       background: transparent !important;
       border: none !important;
@@ -118,9 +121,7 @@
       background: transparent !important;
       color: #1a1a1a !important;
       font-size: 16px !important;
-
-      font-family: "Poppins", sans-serif !important;  /* ★ 폰트만 교체 */
-
+      font-family: "Poppins", sans-serif !important;  /* 검색창 폰트만 변경 */
       padding: 12px 4px !important;
     }
 
@@ -128,6 +129,9 @@
       color: #666 !important;
     }
 
+    /* ------------------------------ */
+    /* ★ 검색 버튼 화살표 더 보이게 수정 */
+    /* ------------------------------ */
     .gsc-search-button-v2 {
       background: var(--cream) !important;
       border: none !important;
@@ -135,14 +139,29 @@
       padding: 14px 28px !important;
       margin-left: 8px !important;
       cursor: pointer !important;
-      color: var(--wine-red) !important;
-      font-weight: 600 !important;
+      color: var(--wine-red-dark) !important;   /* 진한 색 */
+      font-weight: 700 !important;               /* 더 두껍게 */
+      font-size: 20px !important;                /* 더 크게 */
+    }
+
+    /* 구글 기본 숨기고 화살표만 유지 */
+    .gsc-search-button-v2 svg,
+    .gsc-search-button-v2 span {
+      display: none !important;
+    }
+
+    .gsc-search-button-v2::after {
+      content: "➜";
+      display: inline-block;
+      line-height: 1;
     }
 
     .gsc-search-button-v2:hover {
       background: #ffd49a !important;
+      color: #5a0f24 !important;
     }
 
+    /* Search Results Page */
     .gsc-results-wrapper-overlay,
     .gsc-results-wrapper-visible,
     .gsc-resultsbox-visible {
@@ -192,8 +211,11 @@
       text-align: center;
     }
 
+    /* ------------------------------ */
+    /* ★ 하단 안내 텍스트 30% 확대 */
+    /* ------------------------------ */
     .site-info {
-      font-size: 8px;
+      font-size: 10px;  /* 8px → 10px */
       color: var(--text-soft);
       opacity: 0.6;
       text-align: right;
