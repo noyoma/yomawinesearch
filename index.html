@@ -4,7 +4,7 @@
   <title>YomA Wine Search - UI Preview</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- 기존 폰트 그대로 사용 (Marcellus + Poppins) -->
+  <!-- 폰트 유지 (이미 Poppins 포함됨) -->
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif+KR:wght@300;400;500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
@@ -15,13 +15,11 @@
       --text-main: #f5f5f5;
       --text-soft: #e8d4c4;
       --shadow-xl: 0 40px 90px rgba(0,0,0,0.55);
-      --glass: rgba(0,0,0,0.3);
-      --blue-soft: rgba(255,255,255,0.12);
     }
 
     body {
       margin: 0;
-      font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; /* 얇은 고딕 느낌 */
+      font-family: "Poppins", sans-serif;   /* ★ 북유럽 얇은 고딕 적용 */
       background: #A4193D;
       color: var(--text-main);
       display: flex;
@@ -99,7 +97,6 @@
       border-radius: 20px;
     }
 
-    /* Google CSE Styling */
     .gsc-control-cse {
       background: transparent !important;
       border: none !important;
@@ -110,62 +107,42 @@
       margin-bottom: 0 !important;
     }
 
-    /* ▶ 검색창 안 살구색 박스 제거 + 심플 라인만 */
     .gsc-input-box {
-      background: transparent !important;
-      border: 1px solid rgba(255,255,255,0.6) !important;
-      border-radius: 10px !important;
-      padding: 4px 12px !important;
+      background: rgba(255,255,255,0.95) !important;
+      border: 2px solid var(--cream) !important;
+      border-radius: 14px !important;
+      padding: 6px 16px !important;
     }
 
     input.gsc-input {
       background: transparent !important;
       color: #1a1a1a !important;
       font-size: 16px !important;
-      font-weight: 300 !important; /* 얇은 느낌 */
-      font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
-      padding: 10px 4px !important;
+
+      font-family: "Poppins", sans-serif !important;  /* ★ 폰트만 교체 */
+
+      padding: 12px 4px !important;
     }
 
     input.gsc-input::placeholder {
       color: #666 !important;
     }
 
-    /* ▶ 오른쪽 네모 버튼을 엔터 느낌 화살표로 */
     .gsc-search-button-v2 {
-      background: transparent !important;        /* 네모 배경 제거 */
+      background: var(--cream) !important;
       border: none !important;
-      border-radius: 999px !important;
-      width: 40px !important;
-      height: 40px !important;
-      margin-left: 6px !important;
+      border-radius: 10px !important;
+      padding: 14px 28px !important;
+      margin-left: 8px !important;
       cursor: pointer !important;
-      color: #FFDFB9 !important;
-      font-weight: 400 !important;
-      font-size: 20px !important;
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      padding: 0 !important;
-    }
-
-    /* 기존 아이콘/텍스트 숨기기 (구글 기본 내용) */
-    .gsc-search-button-v2 svg,
-    .gsc-search-button-v2 span {
-      display: none !important;
-    }
-
-    .gsc-search-button-v2::after {
-      content: "↵"; /* 엔터 키 느낌 */
-      line-height: 1;
+      color: var(--wine-red) !important;
+      font-weight: 600 !important;
     }
 
     .gsc-search-button-v2:hover {
-      background: rgba(255,255,255,0.12) !important;
-      color: #ffffff !important;
+      background: #ffd49a !important;
     }
 
-    /* Search Results Page - Override wine red background */
     .gsc-results-wrapper-overlay,
     .gsc-results-wrapper-visible,
     .gsc-resultsbox-visible {
@@ -173,7 +150,6 @@
       color: #333 !important;
     }
 
-    /* Result items - white background, dark text */
     .gsc-webResult,
     .gsc-result {
       background: white !important;
@@ -181,7 +157,6 @@
       color: #333 !important;
     }
 
-    /* Result title links */
     .gs-title,
     .gs-title b,
     .gsc-table-result a.gs-title,
@@ -189,17 +164,14 @@
       color: #1a0dab !important;
     }
 
-    /* Result URLs */
     .gs-bidi-start-align.gs-visibleUrl {
       color: #006621 !important;
     }
 
-    /* Result snippets */
     .gs-snippet {
       color: #545454 !important;
     }
 
-    /* Pagination */
     .gsc-cursor-box {
       background: white !important;
     }
@@ -208,7 +180,6 @@
       color: #1a0dab !important;
     }
 
-    /* Override any remaining wine red */
     .gsc-control-cse *:not(input):not(button) {
       background-color: white !important;
     }
@@ -233,21 +204,11 @@
     }
 
     @media (max-width: 600px) {
-      .hero { 
-        padding: 36px 24px; 
-      }
-      .logo-text { 
-        font-size: 28px; 
-      }
-      .search-box {
-        padding: 24px 20px;
-      }
-      .search-form {
-        flex-direction: column;
-      }
-      .search-button {
-        width: 100%;
-      }
+      .hero { padding: 36px 24px; }
+      .logo-text { font-size: 28px; }
+      .search-box { padding: 24px 20px; }
+      .search-form { flex-direction: column; }
+      .search-button { width: 100%; }
     }
   </style>
 </head>
