@@ -2,11 +2,11 @@
     :root {
       --wine-red: #A4193D;
       --wine-red-dark: #7a1230;
-      --cream: #FFDFB9; /* Light, warm color for accents */
+      --cream: #FFDFB9; /* Accent color - now only used for text glow */
       --text-main: #f5f5f5;
       --text-soft: #e8d4c4;
       --shadow-xl: 0 40px 90px rgba(0,0,0,0.55);
-      --input-bg: #fffbf7; /* Very light, off-white for input field */
+      --input-bg: #fffbf7; /* Input background */
     }
 
     body {
@@ -32,7 +32,6 @@
     }
 
     .hero {
-      /* Changed background to be more solid for a cleaner look */
       background: var(--wine-red-dark); 
       border-radius: 32px;
       padding: 50px 36px 40px;
@@ -40,11 +39,6 @@
       box-shadow: var(--shadow-xl);
       position: relative;
       overflow: hidden;
-    }
-
-    .hero::before {
-      /* Removed distracting background blur effect */
-      content: none; 
     }
 
     .logo {
@@ -57,30 +51,23 @@
 
     .logo-text {
       font-family: "Marcellus", serif;
-      font-size: 40px; /* Made the logo text bigger */
-      letter-spacing: 3px; /* Slightly increased spacing */
+      font-size: 40px;
+      letter-spacing: 3px;
       color: #FFDFB9;
-      text-shadow: 0 0 10px rgba(255,223,185,0.5); /* Added subtle glow */
+      text-shadow: 0 0 10px rgba(255,223,185,0.5);
     }
 
     .tagline {
-      font-size: 15px; /* Increased font size */
+      font-size: 15px;
       color: var(--text-soft);
       margin-top: -4px;
       font-weight: 300;
     }
 
-    hr {
-      border: none;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      margin: 0 0 30px;
-      display: none; /* Removed the HR */
-    }
-
     .search-box {
       background: transparent;
       border: none;
-      padding: 0; /* Adjusted padding */
+      padding: 0;
       border-radius: 20px;
     }
 
@@ -95,31 +82,44 @@
     table.gsc-search-box {
       margin-bottom: 0 !important;
       width: 100%;
+      display: block;
     }
 
-    /* Main Search Container - Added a wrapper for the input field and button */
+    /* 1. 검색창 컨테이너 - 테두리 및 그림자 제거 */
     .gsc-search-box .gsc-input-box {
       background: var(--input-bg) !important;
-      border: 2px solid var(--cream) !important;
-      border-radius: 30px !important; /* Highly rounded corners */
-      padding: 0 !important;
-      height: 60px; /* Fixed height for a robust feel */
+      border: none !important; /* 테두리 제거 */
+      border-radius: 30px !important;
+      height: 60px;
       display: flex;
       align-items: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* 그림자를 좀 더 부드럽게 */
+      padding-right: 8px !important;
+    }
+    
+    /* 내부 테이블 구조 */
+    .gsc-search-box .gsc-input-box table {
+      height: 100%;
+      flex-grow: 1;
+      margin-bottom: 0 !important;
+    }
+
+    .gsc-search-box .gsc-input-box td {
+      padding: 0 !important;
+      height: 100%;
+      vertical-align: middle;
     }
 
     input.gsc-input {
       background: transparent !important;
       color: #1a1a1a !important;
-      font-size: 18px !important; /* Bigger font size */
+      font-size: 18px !important;
       padding: 0 20px !important;
       height: 100%;
       box-sizing: border-box;
-      flex-grow: 1; /* Input takes up maximum space */
-      border: none !important; /* Ensure no border on input itself */
+      border: none !important;
       margin: 0 !important;
-      width: auto !important; /* Override default width */
+      width: 100% !important;
     }
 
     input.gsc-input::placeholder {
@@ -127,36 +127,48 @@
       font-weight: 300;
     }
 
+    /* 2. 검색 버튼 스타일 변경 (세련된 화살표 아이콘) */
     .gsc-search-button-v2 {
-      /* Style the button as a circular icon */
       background: var(--wine-red) !important;
       border: none !important;
-      border-radius: 50% !important; /* Circle shape */
-      width: 44px; /* Fixed size */
+      border-radius: 50% !important;
+      width: 44px;
       height: 44px;
       display: flex !important;
       align-items: center;
       justify-content: center;
       padding: 0 !important;
-      margin-right: 8px !important;
+      margin-left: 0 !important; 
       cursor: pointer !important;
-      color: var(--cream) !important; /* Icon color */
+      color: var(--cream) !important;
       transition: background 0.2s ease;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Search Icon */
-    .gsc-search-button-v2 svg {
-      color: var(--cream) !important; /* Ensure icon is light color */
-      width: 24px;
-      height: 24px;
+      flex-shrink: 0;
+      position: relative; /* For the custom icon */
     }
 
     .gsc-search-button-v2:hover {
       background: var(--wine-red-dark) !important;
     }
+    
+    /* 기본 돋보기 아이콘 숨기기 */
+    .gsc-search-button-v2 svg {
+      display: none;
+    }
 
-    /* --- Results Page Styling (Kept original logic) --- */
+    /* 화살표 아이콘 (Custom Arrow/Enter Icon) 추가 */
+    .gsc-search-button-v2::after {
+      content: "→"; /* 유니코드 화살표 */
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--cream) !important;
+      position: absolute;
+      transform: translateX(1px); /* 가운데 정렬 미세 조정 */
+    }
+
+
+    /* --- Results Page Styling (유지) --- */
     .gsc-results-wrapper-overlay,
     .gsc-results-wrapper-visible,
     .gsc-resultsbox-visible {
@@ -199,20 +211,19 @@
     }
     /* --- End Results Page Styling --- */
 
-
     .footer {
-      font-size: 13px; /* Slightly increased size */
+      font-size: 13px;
       color: var(--text-soft);
-      margin-top: 20px; /* Increased margin */
-      opacity: 0.8; /* Made it a little more visible */
+      margin-top: 20px;
+      opacity: 0.8;
       text-align: center;
     }
 
     .site-info {
-      font-size: 11px; /* Increased size */
+      font-size: 11px;
       color: var(--text-soft);
       opacity: 0.7;
-      text-align: center; /* Centered text for better mobile display */
+      text-align: center;
       margin-top: 30px;
       line-height: 1.8;
       padding-top: 16px;
@@ -226,20 +237,19 @@
       .logo-text {
         font-size: 32px;
       }
-      /* Search box now uses full width and keeps the design */
       .gsc-search-box .gsc-input-box {
-        height: 50px; /* Slightly smaller height on mobile */
+        height: 50px;
       }
       input.gsc-input {
         font-size: 16px !important;
+        padding: 0 15px !important;
       }
       .gsc-search-button-v2 {
         width: 38px;
         height: 38px;
       }
-      .gsc-search-button-v2 svg {
-        width: 20px;
-        height: 20px;
+      .gsc-search-button-v2::after {
+        font-size: 20px;
       }
     }
-  </style>
+</style>
