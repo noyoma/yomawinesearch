@@ -1,92 +1,232 @@
-<!-- Improved Mobile-Friendly Search Box for YomA Wine Search -->
-<style>
-  /* Mobile-first improvements */
-  .mobile-search-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-    padding: 20px 16px;
-  }
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YomA Wine Search - Mobile Preview</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif+KR:wght@300;400;500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  .mobile-search-container {
-    width: 100%;
-    background: rgba(255,255,255,0.92);
-    border-radius: 18px;
-    padding: 14px 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    backdrop-filter: blur(12px);
-  }
+  <style>
+    /* Base styling */
+    :root {
+      --wine-red: #A4193D;
+      --wine-red-dark: #7a1230;
+      --cream: #FFDFB9;
+    }
 
-  /* Input box */
-  .gsc-input-box {
-    border: none !important;
-    background: transparent !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-  }
+    body {
+      margin: 0;
+      font-family: "Noto Serif KR", serif;
+      background: #A4193D;
+      color: #f5f5f5;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 40px;
+    }
 
-  input.gsc-input {
-    width: 100% !important;
-    background: transparent !important;
-    font-size: 17px !important;
-    padding: 10px 4px !important;
-    border: none !important;
-    outline: none !important;
-  }
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-  /* Button */
-  .gsc-search-button-v2 {
-    background: #FFDFB9 !important;
-    color: #7a1230 !important;
-    border-radius: 14px !important;
-    padding: 12px 18px !important;
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    border: none !important;
-    min-width: 74px !important;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-  }
+    .logo-text {
+      font-family: "Marcellus", serif;
+      font-size: 32px;
+      letter-spacing: 2px;
+      color: #FFDFB9;
+      margin-bottom: 8px;
+    }
 
-  .gsc-search-button-v2:hover {
-    background: #ffd9a6 !important;
-  }
+    .tagline {
+      font-size: 13px;
+      color: rgba(255, 223, 185, 0.85);
+    }
 
-  /* Make Google CSE container full width */
-  .gsc-control-cse {
-    width: 100% !important;
-    background: transparent !important;
-  }
+    /* Mobile-first improvements */
+    .mobile-search-wrapper {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 20px 16px;
+    }
 
-  /* Search results mobile polish */
-  .gsc-result {
-    border-radius: 16px !important;
-    padding: 14px !important;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.08) !important;
-    margin-bottom: 14px !important;
-  }
-
-  /* Mobile layout tweaks */
-  @media (max-width: 480px) {
     .mobile-search-container {
-      padding: 12px 14px;
-      border-radius: 16px;
+      width: 100%;
+      background: rgba(255,255,255,0.92);
+      border-radius: 18px;
+      padding: 14px 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(12px);
     }
-    .gsc-search-button-v2 {
-      padding: 11px 16px !important;
-      font-size: 14px !important;
-      min-width: 66px !important;
-    }
-  }
-</style>
 
-<div class="mobile-search-wrapper">
-  <div class="mobile-search-container">
-    <script async src="https://cse.google.com/cse.js?cx=911c5210c6a5d4ed7"></script>
-    <div class="gcse-search"></div>
+    /* Input box */
+    .gsc-input-box {
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      flex: 1 !important;
+    }
+
+    input.gsc-input {
+      width: 100% !important;
+      background: transparent !important;
+      font-size: 17px !important;
+      padding: 10px 4px !important;
+      border: none !important;
+      outline: none !important;
+      color: #333 !important;
+    }
+
+    input.gsc-input::placeholder {
+      color: #999 !important;
+    }
+
+    /* Button */
+    .gsc-search-button-v2 {
+      background: #FFDFB9 !important;
+      color: #7a1230 !important;
+      border-radius: 14px !important;
+      padding: 12px 18px !important;
+      font-size: 15px !important;
+      font-weight: 600 !important;
+      border: none !important;
+      min-width: 74px !important;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      cursor: pointer !important;
+      transition: all 0.2s ease;
+    }
+
+    .gsc-search-button-v2:hover {
+      background: #ffd9a6 !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.16);
+    }
+
+    /* Make Google CSE container full width */
+    .gsc-control-cse {
+      width: 100% !important;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+
+    table.gsc-search-box {
+      margin: 0 !important;
+      width: 100% !important;
+    }
+
+    /* Search results mobile polish */
+    .gsc-result {
+      border-radius: 16px !important;
+      padding: 14px !important;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08) !important;
+      margin-bottom: 14px !important;
+      background: white !important;
+    }
+
+    .gsc-results-wrapper-overlay,
+    .gsc-results-wrapper-visible {
+      background: white !important;
+      padding: 16px !important;
+      border-radius: 18px !important;
+      margin-top: 16px !important;
+    }
+
+    .gsc-webResult {
+      background: white !important;
+      border: 1px solid #e8e8e8 !important;
+      border-radius: 12px !important;
+      padding: 16px !important;
+      margin-bottom: 12px !important;
+    }
+
+    .gs-title {
+      color: #1a0dab !important;
+      font-size: 16px !important;
+    }
+
+    .gs-snippet {
+      color: #545454 !important;
+      font-size: 14px !important;
+      line-height: 1.6 !important;
+    }
+
+    .footer {
+      font-size: 11px;
+      color: rgba(255, 223, 185, 0.7);
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .site-info {
+      font-size: 9px;
+      color: rgba(255, 223, 185, 0.6);
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.6;
+      padding: 16px;
+      max-width: 500px;
+    }
+
+    /* Mobile layout tweaks */
+    @media (max-width: 480px) {
+      .logo-text {
+        font-size: 28px;
+      }
+      
+      .mobile-search-container {
+        padding: 12px 14px;
+        border-radius: 16px;
+      }
+      
+      .gsc-search-button-v2 {
+        padding: 11px 16px !important;
+        font-size: 14px !important;
+        min-width: 66px !important;
+      }
+
+      input.gsc-input {
+        font-size: 16px !important;
+      }
+    }
+
+    /* Hide default CSE branding if needed */
+    .gsc-branding {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="logo">
+    <div class="logo-text">YomA Wine Search</div>
+    <div class="tagline">직구 와인을 찾는 가장 편한 방법</div>
   </div>
-</div>
+
+  <div class="mobile-search-wrapper">
+    <div class="mobile-search-container">
+      <script async src="https://cse.google.com/cse.js?cx=911c5210c6a5d4ed7"></script>
+      <div class="gcse-search"></div>
+    </div>
+    
+    <div class="footer">검색 결과는 Google이 제공합니다.</div>
+  </div>
+
+  <div class="site-info">
+    위클리와인, 타운와인, 히든와인, 비타트라 독일, 비타트라 일본, 와인드롭,<br>
+    다이렉트와인, 엑스와인. (세금, 배송료 포함 원스톱 서비스 업체를 제공함)
+  </div>
+</body>
+</html>
