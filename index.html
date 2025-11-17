@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
@@ -13,43 +14,116 @@
     gtag('config', 'G-2XWJWVHRZS');
   </script>
 
-  <!-- 폰트 유지 (Poppins 포함됨) -->
+  <!-- 폰트 -->
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif+KR:wght@300;400;500;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-@@ -21,7 +30,7 @@
+  <style>
+    :root {
+      --wine-red: #A4193D;
+      --wine-red-dark: #7a1230;
+      --cream: #F9E5CF;
+      --text-main: #fdfdfd;
+      --text-soft: #f8d9c2;
+      --glass: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      font-family: "Poppins", sans-serif;  /* ★ 폰트 변경 */
       font-family: "Poppins", sans-serif;
       background: var(--wine-red);
       color: var(--text-main);
-      display: flex;
-@@ -110,12 +119,10 @@
-      margin-bottom: 0 !important;
+      /* display:flex;  ← 제거 */
+      /* justify-content:center; ← 제거 */
+      /* align-items:flex-start; ← 제거 */
+      min-height: 100vh;
     }
 
-    /* ========================================================= */
-    /* ★ 검색창 흰색 박스는 그대로 유지하면서 크림색 내부 라운드 박스 제거 */
-    /* ========================================================= */
-    /* 검색창 내부 스타일 */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .hero {
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 24px;
+      padding: 40px 32px 32px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .logo-text {
+      font-family: "Marcellus", serif;
+      font-size: 32px;
+      letter-spacing: 0.08em;
+    }
+
+    .tagline {
+      font-family: "Noto Serif KR", serif;
+      font-size: 14px;
+      color: var(--text-soft);
+      opacity: 0.9;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      margin: 18px 0 22px;
+    }
+
+    .search-box {
+      background: var(--glass);
+      border-radius: 18px;
+      padding: 28px 24px 22px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    /* ====== CSE 공통 영역 ====== */
+
+    .gsc-control-cse {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+
+    .gsc-control-cse .gsc-search-box {
+      margin: 0 0 18px 0 !important;
+    }
+
+    /* 검색창 흰 박스 */
     .gsc-input-box {
-      background: rgba(255,255,255,0.95) !important; /* 흰색 박스 유지 */
-      border: none !important;                      /* 내부 크림 테두리 제거 */
-      background: rgba(255,255,255,0.95) !important;
+      background: rgba(255, 255, 255, 0.95) !important;
       border: none !important;
       border-radius: 14px !important;
       padding: 6px 16px !important;
     }
-@@ -132,25 +139,20 @@
-      color: #666 !important;
+
+    input.gsc-input,
+    .gsc-input-box input {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      font-size: 14px !important;
+      color: #333 !important;
+      height: 36px !important;
     }
 
-    /* ========================================================= */
-    /* ★ 검색 버튼 = 배경색(버건디) 동일 + 크림 화살표 박스 */
-    /* ========================================================= */
+    input.gsc-input::placeholder {
+      color: #999 !important;
+    }
+
     .gsc-search-button-v2 {
-      background: var(--wine-red) !important;  /* 페이지 배경과 동일 → 버튼이 사라진 듯 자연스럽게 */
       background: var(--wine-red) !important;
       border: none !important;
       border-radius: 10px !important;
@@ -58,28 +132,59 @@
       cursor: pointer !important;
     }
 
-    /* 구글 기본 아이콘 숨기기 */
     .gsc-search-button-v2 svg,
     .gsc-search-button-v2 span {
       display: none !important;
     }
 
-    /* ★ 크림색 박스 + 진한 버건디 화살표 */
     .gsc-search-button-v2::after {
       content: "➜";
       background: var(--cream);
-@@ -167,9 +169,6 @@
-      background: #ffe7cb;
+      color: var(--wine-red-dark);
+      border-radius: 12px;
+      padding: 6px 14px;
+      font-size: 16px;
+      font-weight: 600;
     }
 
-    /* ========================================================= */
-    /* 검색 결과 (원본 유지) */
-    /* ========================================================= */
+    /* 오버레이/결과 박스 위치 고정 풀기 + 넓게 */
     .gsc-results-wrapper-overlay,
     .gsc-results-wrapper-visible,
     .gsc-resultsbox-visible {
-@@ -195,77 +194,4 @@
-      color: #006621 !important;
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
+      max-width: none !important;
+      width: 100% !important;
+      height: auto !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      border: none !important;
+    }
+
+    /* 결과 영역 스타일 */
+    .gsc-result-info,
+    .gsc-above-wrapper-area,
+    .gsc-above-wrapper-area-container,
+    .gsc-table-result {
+      background: white !important;
+    }
+
+    .gsc-webResult.gsc-result {
+      background: white !important;
+      border-radius: 0 !important;
+      padding: 8px 0 !important;
+    }
+
+    .gs-webResult .gs-title,
+    .gs-webResult .gs-title * {
+      color: #1a0dab !important;
+      text-decoration: none !important;
+    }
+
+    .gs-webResult .gs-title:hover,
+    .gs-webResult .gs-title:hover * {
+      text-decoration: underline !important;
     }
 
     .gs-snippet {
@@ -94,6 +199,7 @@
       color: #1a0dab !important;
     }
 
+    /* 결과 영역 배경을 흰색으로 맞추기 */
     .gsc-control-cse *:not(input):not(button) {
       background-color: white !important;
     }
@@ -106,9 +212,6 @@
       text-align: center;
     }
 
-    /* ========================================================= */
-    /* ★ 하단 안내 텍스트 30% 확대 (8px → 10px) */
-    /* ========================================================= */
     .site-info {
       font-size: 10px;
       color: var(--text-soft);
@@ -117,15 +220,13 @@
       margin-top: 20px;
       line-height: 1.6;
       padding-top: 16px;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     @media (max-width: 600px) {
-      .hero { padding: 36px 24px; }
-      .logo-text { font-size: 28px; }
-      .search-box { padding: 24px 20px; }
-      .search-form { flex-direction: column; }
-      .search-button { width: 100%; }
+      .hero { padding: 32px 18px; }
+      .logo-text { font-size: 26px; }
+      .search-box { padding: 22px 18px; }
     }
   </style>
 </head>
